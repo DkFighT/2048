@@ -7,12 +7,14 @@ let total_score = 0;
 
 function genField(){
     let num = 2;
+    let counter = 0;
     let i = getRandomInt(0, 4);
     let j = getRandomInt(0, 4);
     while (true){
         if (field[i][j] != 1){
             i = getRandomInt(0, 4);
             j = getRandomInt(0, 4);
+            counter++;
         }
         else{
             field[i][j] = num;
@@ -20,7 +22,8 @@ function genField(){
             console.log('ready');
             break;
         }
-
+        if (counter > 2000){
+            break;
     }
 }
 genField();
