@@ -24,6 +24,7 @@ function genField(){
         }
         if (counter > 2000){
             break;
+        }
     }
 }
 genField();
