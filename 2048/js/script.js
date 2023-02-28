@@ -1,25 +1,26 @@
 var item = document.querySelectorAll('.pole');
 
-var mass = [[0,1,2,3],[4,5,6,7],[8,9,10,11],[12,13,14,15]];
-var field = [[1,1,1,1],[1,1,1,1],[1,1,1,1],[1,1,1,1]]
+let mass = [[0,1,2,3],[4,5,6,7],[8,9,10,11],[12,13,14,15]];
+let field = [[1,1,1,1],[1,1,1,1],[1,1,1,1],[1,1,1,1]]
 
-var total_score = 0;
+let total_score = 0;
 
 function genField(){
-    var rnd = getRandomInt(1, 17);
     let num = 2;
-    
-    for(let i = 0; i < 4; i++){
-        for(let j = 0; j < 4; j++){
-            if((mass[i][j] == rnd - 1) && field[i][j] == 1){
-                field[i][j] = num;
-                item[rnd - 1].innerHTML = '<span>2</span>';
-                console.log('ready');
-            }
-            else{
-                rnd = getRandomInt(1, 17);
-            } 
+    let i = getRandomInt(0, 4);
+    let j = getRandomInt(0, 4);
+    while (true){
+        if (field[i][j] != 1){
+            i = getRandomInt(0, 4);
+            j = getRandomInt(0, 4);
         }
+        else{
+            field[i][j] = num;
+            item[mass[i][j]].innerHTML = '<span>2</span>';
+            console.log('ready');
+            break;
+        }
+
     }
 }
 genField();
@@ -122,7 +123,7 @@ function moveDown(){
         }
     }
 }
-var ball = document.getElementById('ball');
+let ball = document.getElementById('ball');
 document.addEventListener('keyup', (ev)=>{
     if(ev.key === 'w' || ev.key === 'ц' || ev.key === 'W' || ev.key === 'Ц' || ev.key === 'ArrowUp'){
         animation(3);
@@ -163,15 +164,15 @@ function animation(rotate){
         ball.style.top = '50%';
         ball.style.left = '50%';
     }
-    else if(rotate == 1){
+    if(rotate == 1){
         ball.style.top = '50%';
         ball.style.left = '50%';
     }
-    else if(rotate == 2){
+    if(rotate == 2){
         ball.style.top = '50%';
         ball.style.left = '50%';
     }
-    else if(rotate == 3){
+    if(rotate == 3){
         ball.style.top = '50%';
         ball.style.left = '50%';
     }
